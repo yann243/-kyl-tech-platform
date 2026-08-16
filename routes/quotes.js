@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const requireAdmin = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -29,8 +30,8 @@ function saveDatabase(db) {
 
 
 // GET /api/quotes
-// Récupérer les demandes de devis
-router.get("/", (req, res) => {
+// 🔐 ADMIN UNIQUEMENT
+router.get("/", requireAdmin, (req, res) => {
 
     try {
 
@@ -43,7 +44,7 @@ router.get("/", (req, res) => {
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Erreur récupération devis :", error);
 
         res.status(500).json({
             success: false,
@@ -51,11 +52,12 @@ router.get("/", (req, res) => {
         });
 
     }
+
 });
 
 
 // POST /api/quotes
-// Créer une demande de devis
+// 🌐 PUBLIC : créer une demande
 router.post("/", (req, res) => {
 
     try {
@@ -70,7 +72,6 @@ router.post("/", (req, res) => {
             message
         } = req.body;
 
-        // Vérification des champs obligatoires
         if (!name || !email || !service || !message) {
 
             return res.status(400).json({
@@ -90,19 +91,19 @@ router.post("/", (req, res) => {
 
             id: Date.now(),
 
-            name: name.trim(),
+            name: String(name).trim(),
 
-            email: email.trim(),
+            email: String(email).trim(),
 
-            phone: phone ? phone.trim() : "",
+            phone: phone ? String(phone).trim() : "",
 
-            company: company ? company.trim() : "",
+            company: company ? String(company).trim() : "",
 
-            service: service.trim(),
+            service: String(service).trim(),
 
-            budget: budget ? budget.trim() : "",
+            budget: budget ? String(budget).trim() : "",
 
-            message: message.trim(),
+            message: String(message).trim(),
 
             status: "nouvelle",
 
@@ -118,15 +119,13 @@ router.post("/", (req, res) => {
 
             success: true,
 
-            message: "Votre demande de devis a été envoyée avec succès.",
-
-            quote: quote
+            message: "Votre demande de devis a été envoyée avec succès."
 
         });
 
     } catch (error) {
 
-        console.error("Erreur devis :", error);
+        console.error("Erreur création devis :", error);
 
         res.status(500).json({
 

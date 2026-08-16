@@ -1,67 +1,72 @@
 const token = localStorage.getItem("kyl_admin_token");
 
-const response = await fetch("/api/quotes", {
-    headers: {
-        "Authorization": `Bearer ${token}`
-    }
-});
-const token = localStorage.getItem("kyl_admin_token");
-
 if (!token) {
     window.location.href = "/login.html";
 }
+
+async function loadQuotes() {
     try {
-        const response = await fetch("/api/quotes");
+        const response = await fetch("/api/quotes", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            localStorage.removeItem("kyl_admin_token");
+            window.location.href = "/login.html";
+            return;
+        }
 
         const data = await response.json();
 
         if (!response.ok || !data.success) {
-            console.error("Erreur devis :", data.message);
+            console.error(
+                "Erreur devis :",
+                data.message || "Erreur inconnue"
+            );
             return;
         }
 
-        console.log("Demandes de devis :", data.quotes);
-
-    } catch (error) {
-        console.error("Impossible de récupérer les devis :", error);
-    }
-}
-
-loadQuotes();
-async function loadQuotes() {
-
-    try {
-
-        const response = await fetch("/api/quotes");
-
-        const data = await response.json();
-
         const quotes = data.quotes || [];
 
-        document.getElementById("totalQuotes").textContent =
-            quotes.length;
-
-        document.getElementById("newQuotes").textContent =
-            quotes.filter(q => q.status === "nouvelle").length;
-
-        document.getElementById("progressQuotes").textContent =
-            quotes.filter(q => q.status === "en cours").length;
-
-        document.getElementById("doneQuotes").textContent =
-            quotes.filter(q => q.status === "terminée").length;
-
+        const total = document.getElementById("totalQuotes");
+        const nouveau = document.getElementById("newQuotes");
+        const progress = document.getElementById("progressQuotes");
+        const done = document.getElementById("doneQuotes");
         const container = document.getElementById("quotesList");
 
-        if (quotes.length === 0) {
+        if (total) {
+            total.textContent = quotes.length;
+        }
 
+        if (nouveau) {
+            nouveau.textContent =
+                quotes.filter(q => q.status === "nouvelle").length;
+        }
+
+        if (progress) {
+            progress.textContent =
+                quotes.filter(q => q.status === "en cours").length;
+        }
+
+        if (done) {
+            done.textContent =
+                quotes.filter(q => q.status === "terminée").length;
+        }
+
+        if (!container) {
+            console.error("quotesList introuvable.");
+            return;
+        }
+
+        if (quotes.length === 0) {
             container.innerHTML =
                 "<p>Aucune demande de devis.</p>";
-
             return;
         }
 
         container.innerHTML = quotes.map(quote => `
-
             <div class="quote-card">
 
                 <h3>${quote.name}</h3>
@@ -101,16 +106,23 @@ async function loadQuotes() {
                     ${quote.status}
                 </p>
 
-            </div>
+                <p>
+                    <strong>Date :</strong>
+                    ${new Date(quote.createdAt).toLocaleString("fr-FR")}
+                </p>
 
+            </div>
         `).join("");
 
     } catch (error) {
+        console.error("Erreur :", error);
 
-        console.error(error);
+        const container = document.getElementById("quotesList");
 
-        document.getElementById("quotesList").innerHTML =
-            "<p>Impossible de charger les demandes.</p>";
+        if (container) {
+            container.innerHTML =
+                "<p>Impossible de charger les demandes.</p>";
+        }
     }
 }
 
