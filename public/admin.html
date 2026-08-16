@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYL Tech — Administration</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="admin-header">
+    <div>
+        <h1>🔐 KYL Tech</h1>
+        <p>Tableau de bord administrateur</p>
+    </div>
+</header>
+
+<main class="admin-container">
+
+    <section class="admin-stats">
+
+        <div class="admin-card">
+            <span>📩</span>
+            <h2 id="totalQuotes">0</h2>
+            <p>Demandes de devis</p>
+        </div>
+
+        <div class="admin-card">
+            <span>🆕</span>
+            <h2 id="newQuotes">0</h2>
+            <p>Nouvelles demandes</p>
+        </div>
+
+        <div class="admin-card">
+            <span>⚙️</span>
+            <h2 id="progressQuotes">0</h2>
+            <p>En cours</p>
+        </div>
+
+        <div class="admin-card">
+            <span>✅</span>
+            <h2 id="doneQuotes">0</h2>
+            <p>Terminées</p>
+        </div>
+
+    </section>
+
+    <section class="admin-section">
+
+        <h2>Demandes de devis</h2>
+
+        <div id="quotesList">
+            <p>Chargement des demandes...</p>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/js/admin.js"></script>
+
+</body>
+</html>

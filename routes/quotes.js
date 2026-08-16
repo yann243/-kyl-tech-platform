@@ -6,6 +6,53 @@ const path = require("path");
 
 const dbPath = path.join(__dirname, "../database/db.json");
 
+function readDatabase() {
+    if (!fs.existsSync(dbPath)) {
+        return { users: [], quotes: [] };
+    }
+
+    const data = fs.readFileSync(dbPath, "utf8");
+
+    if (!data.trim()) {
+        return { users: [], quotes: [] };
+    }
+
+    return JSON.parse(data);
+}
+
+function saveDatabase(db) {
+    fs.writeFileSync(
+        dbPath,
+        JSON.stringify(db, null, 2)
+    );
+}
+
+// GET : récupérer les demandes de devis
+router.get("/", (req, res) => {
+
+    try {
+
+        const db = readDatabase();
+
+        res.json({
+            success: true,
+            quotes: db.quotes || []
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Impossible de récupérer les demandes."
+        });
+
+    }
+});
+
+
+// POST : créer une demande de devis
 router.post("/", (req, res) => {
 
     try {
@@ -21,43 +68,56 @@ router.post("/", (req, res) => {
         } = req.body;
 
         if (!name || !email || !service || !message) {
+
             return res.status(400).json({
                 success: false,
                 message: "Veuillez remplir les champs obligatoires."
             });
+
         }
 
-        const db = JSON.parse(
-            fs.readFileSync(dbPath, "utf8")
-        );
+        const db = readDatabase();
 
         if (!db.quotes) {
             db.quotes = [];
         }
 
         const quote = {
+
             id: Date.now(),
-            name,
-            email,
+
+            name: name,
+
+            email: email,
+
             phone: phone || "",
+
             company: company || "",
-            service,
+
+            service: service,
+
             budget: budget || "",
-            message,
+
+            message: message,
+
             status: "nouvelle",
+
             createdAt: new Date().toISOString()
+
         };
 
         db.quotes.push(quote);
 
-        fs.writeFileSync(
-            dbPath,
-            JSON.stringify(db, null, 2)
-        );
+        saveDatabase(db);
 
         res.status(201).json({
+
             success: true,
-            message: "Demande de devis enregistrée."
+
+            message: "Demande de devis enregistrée.",
+
+            quote: quote
+
         });
 
     } catch (error) {
@@ -65,12 +125,16 @@ router.post("/", (req, res) => {
         console.error(error);
 
         res.status(500).json({
+
             success: false,
+
             message: "Erreur serveur."
+
         });
 
     }
 
 });
+
 
 module.exports = router;
