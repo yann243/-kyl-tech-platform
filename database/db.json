@@ -24,6 +24,18 @@
       "message": "Kkk",
       "status": "nouvelle",
       "createdAt": "2026-08-16T17:41:16.895Z"
+    },
+    {
+      "id": 1786905241971,
+      "name": "Test KYL",
+      "email": "test@example.com",
+      "phone": "+243000000000",
+      "company": "KYL Tech",
+      "service": "Marketing Digital",
+      "budget": "500 - 1000 USD",
+      "message": "Test du système de devis",
+      "status": "nouvelle",
+      "createdAt": "2026-08-16T18:34:01.971Z"
     }
   ]
 }

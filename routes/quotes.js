@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
-
 const fs = require("fs");
 const path = require("path");
+
+const router = express.Router();
 
 const dbPath = path.join(__dirname, "../database/db.json");
 
@@ -27,7 +27,9 @@ function saveDatabase(db) {
     );
 }
 
-// GET : récupérer les demandes de devis
+
+// GET /api/quotes
+// Récupérer les demandes de devis
 router.get("/", (req, res) => {
 
     try {
@@ -52,7 +54,8 @@ router.get("/", (req, res) => {
 });
 
 
-// POST : créer une demande de devis
+// POST /api/quotes
+// Créer une demande de devis
 router.post("/", (req, res) => {
 
     try {
@@ -67,6 +70,7 @@ router.post("/", (req, res) => {
             message
         } = req.body;
 
+        // Vérification des champs obligatoires
         if (!name || !email || !service || !message) {
 
             return res.status(400).json({
@@ -86,19 +90,19 @@ router.post("/", (req, res) => {
 
             id: Date.now(),
 
-            name: name,
+            name: name.trim(),
 
-            email: email,
+            email: email.trim(),
 
-            phone: phone || "",
+            phone: phone ? phone.trim() : "",
 
-            company: company || "",
+            company: company ? company.trim() : "",
 
-            service: service,
+            service: service.trim(),
 
-            budget: budget || "",
+            budget: budget ? budget.trim() : "",
 
-            message: message,
+            message: message.trim(),
 
             status: "nouvelle",
 
@@ -114,7 +118,7 @@ router.post("/", (req, res) => {
 
             success: true,
 
-            message: "Demande de devis enregistrée.",
+            message: "Votre demande de devis a été envoyée avec succès.",
 
             quote: quote
 
@@ -122,13 +126,13 @@ router.post("/", (req, res) => {
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Erreur devis :", error);
 
         res.status(500).json({
 
             success: false,
 
-            message: "Erreur serveur."
+            message: "Impossible d'enregistrer la demande."
 
         });
 

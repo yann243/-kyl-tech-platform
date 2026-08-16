@@ -1,8 +1,33 @@
 const token = localStorage.getItem("kyl_admin_token");
 
+const response = await fetch("/api/quotes", {
+    headers: {
+        "Authorization": `Bearer ${token}`
+    }
+});
+const token = localStorage.getItem("kyl_admin_token");
+
 if (!token) {
     window.location.href = "/login.html";
 }
+    try {
+        const response = await fetch("/api/quotes");
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            console.error("Erreur devis :", data.message);
+            return;
+        }
+
+        console.log("Demandes de devis :", data.quotes);
+
+    } catch (error) {
+        console.error("Impossible de récupérer les devis :", error);
+    }
+}
+
+loadQuotes();
 async function loadQuotes() {
 
     try {
