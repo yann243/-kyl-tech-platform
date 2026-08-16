@@ -3,109 +3,530 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KYL Tech Technologies</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>KYL Tech Technologies | Innovation • Sécurité • Solutions</title>
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-<header>
+<header class="navbar">
+
     <div class="logo">
-        <h1>🚀 KYL Tech Technologies</h1>
-        <p>Innovation • Sécurité • Solutions</p>
+        <span class="logo-mark">K</span>
+        <div>
+            <strong>KYL Tech</strong>
+            <small>Technologies</small>
+        </div>
     </div>
 
     <nav>
-        <a href="#">Accueil</a>
-        <a href="#">Services</a>
-        <a href="#">À propos</a>
-        <a href="#">Projets</a>
-        <a href="#">Contact</a>
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#apropos">À propos</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
     </nav>
+
+    <a href="#devis" class="btn-primary">Demander un devis</a>
+
 </header>
 
-<section class="hero">
 
-<h2>Votre partenaire numérique de confiance</h2>
+<main>
 
-<p>
+<!-- HERO -->
 
-Cybersécurité • Développement Web & Mobile • Marketing Digital • Maintenance Informatique • Réseaux • Numérisation • Solutions d'entreprise.
+<section id="accueil" class="hero">
 
-</p>
+    <div class="hero-content">
 
-<a class="btn" href="#">
-Demander un devis
-</a>
+        <span class="badge">🚀 Solutions numériques modernes</span>
+
+        <h1>
+            Construisons votre
+            <span>avenir numérique.</span>
+        </h1>
+
+        <p>
+            KYL Tech Technologies accompagne les entreprises,
+            organisations et particuliers dans leur transformation
+            numérique, leur sécurité informatique et leur développement.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#devis" class="btn-primary">
+                Demander un devis →
+            </a>
+
+            <a href="#services" class="btn-secondary">
+                Découvrir nos services
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="tech-circle">
+            <span> K Y L </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="section">
+
+    <div class="section-heading">
+
+        <span class="section-tag">NOS EXPERTISES</span>
+
+        <h2>
+            Des solutions pour
+            <span>chaque besoin.</span>
+        </h2>
+
+        <p>
+            Découvrez nos services technologiques conçus pour
+            améliorer votre activité.
+        </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+        <!-- CYBERSECURITE -->
+
+        <article class="service-card">
+
+            <div class="service-icon">🔐</div>
+
+            <h3>Cybersécurité</h3>
+
+            <p>
+                Protection des systèmes, audits, tests de sécurité,
+                sécurisation des réseaux et protection des données.
+            </p>
+
+            <button class="service-btn"
+                data-service="cybersecurite">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+        <!-- DEVELOPPEMENT -->
+
+        <article class="service-card">
+
+            <div class="service-icon">💻</div>
+
+            <h3>Développement Web & Mobile</h3>
+
+            <p>
+                Création de sites web, applications mobiles,
+                plateformes et logiciels sur mesure.
+            </p>
+
+            <button class="service-btn"
+                data-service="developpement">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+        <!-- MARKETING -->
+
+        <article class="service-card">
+
+            <div class="service-icon">📈</div>
+
+            <h3>Marketing Digital</h3>
+
+            <p>
+                Stratégie digitale, réseaux sociaux, référencement,
+                publicité en ligne et création de contenu.
+            </p>
+
+            <button class="service-btn"
+                data-service="marketing">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+        <!-- MAINTENANCE -->
+
+        <article class="service-card">
+
+            <div class="service-icon">🖥️</div>
+
+            <h3>Maintenance Informatique</h3>
+
+            <p>
+                Maintenance, réparation, optimisation et assistance
+                pour vos équipements informatiques.
+            </p>
+
+            <button class="service-btn"
+                data-service="maintenance">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+        <!-- RESEAUX -->
+
+        <article class="service-card">
+
+            <div class="service-icon">🌐</div>
+
+            <h3>Réseaux & Infrastructure</h3>
+
+            <p>
+                Installation, configuration, sécurisation et
+                administration des infrastructures réseau.
+            </p>
+
+            <button class="service-btn"
+                data-service="reseaux">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+        <!-- NUMERISATION -->
+
+        <article class="service-card">
+
+            <div class="service-icon">📄</div>
+
+            <h3>Numérisation</h3>
+
+            <p>
+                Transformation des processus papier en solutions
+                numériques simples et efficaces.
+            </p>
+
+            <button class="service-btn"
+                data-service="numerisation">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+        <!-- ENTREPRISE -->
+
+        <article class="service-card">
+
+            <div class="service-icon">🏢</div>
+
+            <h3>Solutions pour entreprises</h3>
+
+            <p>
+                ERP, CRM, automatisation, plateformes professionnelles
+                et transformation digitale.
+            </p>
+
+            <button class="service-btn"
+                data-service="entreprise">
+                Découvrir →
+            </button>
+
+        </article>
+
+
+    </div>
 
 </section>
 
-<section class="services">
 
-<h2>Nos Services</h2>
+<!-- POURQUOI KYL -->
 
-<div class="cards">
+<section id="apropos" class="section about">
 
-<div class="card">
-<h3>🔐 Cybersécurité</h3>
-<p>Pentest, audits, sécurité réseau et protection des données.</p>
-</div>
+    <div>
 
-<div class="card">
-<h3>💻 Développement</h3>
-<p>Applications Web, Mobile et Logiciels sur mesure.</p>
-</div>
+        <span class="section-tag">POURQUOI KYL TECH ?</span>
 
-<div class="card">
-<h3>📈 Marketing Digital</h3>
-<p>Sites web, réseaux sociaux, référencement et publicité.</p>
-</div>
+        <h2>
+            La technologie au service
+            de votre <span>réussite.</span>
+        </h2>
 
-<div class="card">
-<h3>🖥 Maintenance Informatique</h3>
-<p>Réparation, optimisation et assistance informatique.</p>
-</div>
+    </div>
 
-<div class="card">
-<h3>🌐 Réseaux</h3>
-<p>Installation, configuration et sécurisation des réseaux.</p>
-</div>
+    <div class="about-grid">
 
-<div class="card">
-<h3>🏢 Solutions Entreprises</h3>
-<p>ERP, CRM, numérisation et transformation digitale.</p>
-</div>
+        <div>
+            <strong>01</strong>
+            <h3>Innovation</h3>
+            <p>
+                Nous développons des solutions modernes adaptées
+                aux besoins réels de nos clients.
+            </p>
+        </div>
 
-</div>
+        <div>
+            <strong>02</strong>
+            <h3>Sécurité</h3>
+            <p>
+                La protection des données et des systèmes est au cœur
+                de nos solutions.
+            </p>
+        </div>
+
+        <div>
+            <strong>03</strong>
+            <h3>Accompagnement</h3>
+            <p>
+                Nous accompagnons nos clients de l'idée jusqu'à
+                la mise en production.
+            </p>
+        </div>
+
+    </div>
 
 </section>
+
+
+<!-- DEVIS -->
+
+<section id="devis" class="quote-section">
+
+    <div class="quote-container">
+
+        <div class="quote-intro">
+
+            <span class="section-tag">DEVIS GRATUIT</span>
+
+            <h2>
+                Parlons de votre
+                <span>projet.</span>
+            </h2>
+
+            <p>
+                Décrivez-nous votre besoin. Notre équipe analysera
+                votre demande et vous contactera.
+            </p>
+
+            <div class="quote-info">
+                ⚡ Réponse rapide<br>
+                🔒 Vos informations restent confidentielles<br>
+                💼 Étude personnalisée
+            </div>
+
+        </div>
+
+
+        <form id="quoteForm" class="quote-form">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Nom complet *</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Votre nom"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email *</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="vous@example.com"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Téléphone</label>
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="+243 ..."
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Entreprise</label>
+
+                    <input
+                        type="text"
+                        name="company"
+                        placeholder="Nom de votre entreprise"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Service souhaité *</label>
+
+                <select name="service" required>
+
+                    <option value="">Sélectionnez un service</option>
+
+                    <option>Cybersécurité</option>
+                    <option>Développement Web & Mobile</option>
+                    <option>Marketing Digital</option>
+                    <option>Maintenance Informatique</option>
+                    <option>Réseaux & Infrastructure</option>
+                    <option>Numérisation</option>
+                    <option>Solutions pour entreprises</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Budget estimatif</label>
+
+                <select name="budget">
+
+                    <option value="">Sélectionnez une tranche</option>
+
+                    <option>Moins de 100 $</option>
+                    <option>100 $ - 500 $</option>
+                    <option>500 $ - 1 000 $</option>
+                    <option>1 000 $ - 5 000 $</option>
+                    <option>Plus de 5 000 $</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Décrivez votre projet *</label>
+
+                <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Expliquez-nous votre projet..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button type="submit" class="btn-primary submit-btn">
+
+                Envoyer ma demande →
+
+            </button>
+
+            <div id="formMessage"></div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact section">
+
+    <span class="section-tag">CONTACT</span>
+
+    <h2>Travaillons <span>ensemble.</span></h2>
+
+    <p>📧 contact@kyltech.com</p>
+
+    <p>📍 Kinshasa — République démocratique du Congo</p>
+
+</section>
+
+</main>
+
+
+<!-- MODAL SERVICES -->
+
+<div id="serviceModal" class="modal">
+
+    <div class="modal-content">
+
+        <button id="closeModal" class="modal-close">
+            ×
+        </button>
+
+        <div id="modalIcon"></div>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalDescription"></p>
+
+        <div id="modalServices"></div>
+
+        <a href="#devis" id="modalQuote" class="btn-primary">
+            Demander un devis →
+        </a>
+
+    </div>
+
+</div>
+
 
 <footer>
 
-<h3>KYL Tech Technologies</h3>
+    <strong>KYL Tech Technologies</strong>
 
-<p>
+    <p>
+        Innovation • Sécurité • Solutions
+    </p>
 
-📧 contact@kyltech.com
-
-</p>
-
-<p>
-
-📍 Kinshasa - RDC
-
-</p>
-
-<p>
-
-© 2026 KYL Tech Technologies
-
-</p>
+    <p>
+        © 2026 KYL Tech Technologies — Tous droits réservés.
+    </p>
 
 </footer>
 
-<script src="js/app.js"></script>
+
+<script src="/js/app.js"></script>
 
 </body>
 </html>
