@@ -1,3 +1,8 @@
+const token = localStorage.getItem("kyl_admin_token");
+
+if (!token) {
+    window.location.href = "/login.html";
+}
 async function loadQuotes() {
 
     try {
